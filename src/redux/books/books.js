@@ -1,6 +1,6 @@
 // Actions
-const ADDED_BOOK = 'ADDED_BOOK';
-const REMOVED_BOOK = 'REMOVED_BOOK';
+const ADDED_BOOK = 'bookstore/books/ADDED_BOOK';
+const REMOVED_BOOK = 'bookstore/books/REMOVED_BOOK';
 
 // Initial State
 const initialState = { books: [] };
