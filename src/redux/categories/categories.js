@@ -10,10 +10,7 @@ export const checkStatus = () => ({ type: CHECK_STATUS });
 // Reducer
 const categoriesReducer = (state = initialState, action) => {
   if (action.type === CHECK_STATUS) {
-    return {
-      ...state,
-      categories: [...state.categories, 'Under Construction'],
-    };
+    return 'Under Construction';
   }
   return state;
 };
