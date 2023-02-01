@@ -1,26 +1,38 @@
-// Actions
 const ADDED_BOOK = 'bookstore/books/ADDED_BOOK';
 const REMOVED_BOOK = 'bookstore/books/REMOVED_BOOK';
 
-// Initial State
-const initialState = { books: [] };
+const initialState = {
+  books: [{
+    id: '1',
+    title: 'The Hunger Games',
+    author: 'Suzanne Collins',
+  },
+  {
+    id: '2',
+    title: 'Dune',
+    author: 'Frank Herbert',
+  },
+  {
+    id: '3',
+    title: 'The River and The Source',
+    author: 'Thomas Cook',
+  }],
+};
 
-// Action creators
 export const addBookAction = (newBook) => ({ type: ADDED_BOOK, newBook });
 export const removeBookAction = (id) => ({ type: REMOVED_BOOK, id });
 
-// Reducer
 const booksReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDED_BOOK:
       return {
         ...state,
-        books: [...state, action.newBook],
+        books: [...state.books, action.newBook],
       };
     case REMOVED_BOOK:
       return {
         ...state,
-        books: [...state.filter((book) => book.id !== action.id)],
+        books: [...state.books.filter((book) => book.id !== action.id)],
       };
     default:
       return state;
