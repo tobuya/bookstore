@@ -1,42 +1,59 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+const FETCHED_BOOK = 'bookstore/books/FETCHED_BOOK';
 const ADDED_BOOK = 'bookstore/books/ADDED_BOOK';
 const REMOVED_BOOK = 'bookstore/books/REMOVED_BOOK';
 
-const initialState = {
-  books: [{
-    id: '1',
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-  },
-  {
-    id: '2',
-    title: 'Dune',
-    author: 'Frank Herbert',
-  },
-  {
-    id: '3',
-    title: 'The River and The Source',
-    author: 'Thomas Cook',
-  }],
-};
+const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps';
+const appId = 'coi5KbwSmZBfENXVGL0y';
+const appResourceUrl = `${baseUrl}/${appId}/books`;
 
-export const addBookAction = (newBook) => ({ type: ADDED_BOOK, newBook });
-export const removeBookAction = (id) => ({ type: REMOVED_BOOK, id });
+const initialState = [];
+
+const fetchBooks = createAsyncThunk(
+  FETCHED_BOOK,
+  async (post, { dispatch }) => {
+    const response = await fetch(appResourceUrl);
+    const jsonData = await response.json();
+    const books = Object.keys(jsonData).map((id) => ({
+      ...jsonData[id][0],
+      item_id: id,
+    }));
+    dispatch({
+      type: FETCHED_BOOK,
+      payload: books,
+    });
+  },
+);
+
+const addBook = createAsyncThunk(
+  ADDED_BOOK,
+  async (book, { dispatch }) => {
+    await fetch(appResourceUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(book),
+    });
+    dispatch({ type: ADDED_BOOK, payload: book });
+  },
+);
+
+const deleteBook = createAsyncThunk(
+  REMOVED_BOOK,
+  async (id, { dispatch }) => {
+    await fetch(`${appResourceUrl}/${id}`, { method: 'DELETE' });
+    dispatch({ type: REMOVED_BOOK, payload: id });
+  },
+);
 
 const booksReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADDED_BOOK:
-      return {
-        ...state,
-        books: [...state.books, action.newBook],
-      };
-    case REMOVED_BOOK:
-      return {
-        ...state,
-        books: [...state.books.filter((book) => book.id !== action.id)],
-      };
-    default:
-      return state;
+  if (action.type === FETCHED_BOOK) {
+    return action.payload;
+  } if (action.type === ADDED_BOOK) {
+    return [...state, action.payload];
   }
+  return state;
 };
 
+export { fetchBooks, addBook, deleteBook };
 export default booksReducer;
