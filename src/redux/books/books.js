@@ -51,6 +51,8 @@ const booksReducer = (state = initialState, action) => {
     return action.payload;
   } if (action.type === ADDED_BOOK) {
     return [...state, action.payload];
+  } if (action.type === REMOVED_BOOK) {
+    return state.filter((book) => book.item_id !== action.payload);
   }
   return state;
 };
