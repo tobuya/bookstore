@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5% 20px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  gap: 30px;
+  color: #3a3a3b;
+}
+
+.h {
+  font-family: "Montserrat", sans-serif;
+  color: #0290ff;
+  font-size: 30px;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+  opacity: 0.7;
+}
