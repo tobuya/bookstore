@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { v4 } from 'uuid';
 import { addBook } from '../redux/books/books';
+import styles from '../styles/BookForm.module.css';
 
 const BookForm = () => {
   const [bookState, setBookState] = useState({
@@ -23,7 +24,7 @@ const BookForm = () => {
   };
 
   return (
-    <section>
+    <section className={styles.container}>
       <h2>ADD NEW BOOK</h2>
       <form onSubmit={onNewBookSubmit}>
         <input type="text" name="title" value={bookState.title} onChange={onAddingNewBook} placeholder="Book title" />

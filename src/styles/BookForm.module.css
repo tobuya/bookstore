@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 4px 4px #d3d3d3;
+}
+
+.container > h2 {
+  opacity: 0.5;
+}
+
+.container > form {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 60px;
+}
+
+input {
+  padding: 10px;
+  flex: 1;
+  font-size: medium;
+}
+
+form > button {
+  color: #fff;
+  background-color: #0290ff;
+  border: none;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+form > button:hover {
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkStatus } from '../redux/categories/categories';
+import styles from '../styles/CategoryPage.module.css';
 
 const CategoryPage = () => {
   const categoriesData = useSelector((state) => state.categories);
@@ -11,7 +12,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <button type="button" onClick={onButtonClick}>Check Status</button>
       <h1>{categoriesData.categories[0]}</h1>
     </div>
