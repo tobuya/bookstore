@@ -58,23 +58,21 @@
 
 - **Add a book to the list**
 - **Delete a selected book from the list**
+- **View books from the store**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #### 🔭 Future Features <a name="future-features"></a>
 
-- **Add reducers and actions**
-- **Use Redux in react components**
-- **Connect to API**
-- **Styling**
-- **Add a live demo link**
+- **Add categories section**
+- **Update progress section**
 
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- <a href="#" target="_blank">Live Demo Link</a>
+- <a href="https://bookstore-clig.onrender.com" target="_blank">Live Demo Link</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
