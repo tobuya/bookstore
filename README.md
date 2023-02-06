@@ -56,8 +56,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Add a book to the list**
-- **Delete a selected book from the list**
+- **Add a book to the store**
+- **Delete a selected book from the store**
 - **View books from the store**
 
 
